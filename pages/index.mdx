@@ -1,4 +1,5 @@
 import { Cards, Card } from "nextra/components";
+import { BookOpenIcon, GlobeAltIcon, CodeBracketIcon, BookmarkIcon } from '@heroicons/react/24/outline'
 
 # Introduction to SocialConnect
 
@@ -22,16 +23,17 @@ Here is a short demo of a payment from a Kaala wallet user to a Libera wallet us
 ### Explore Documentation
 
 <Cards cols={2}>
-<Card title="Guides" href="guides">
+<Card title="Guides" icon={<BookOpenIcon />} href="guides">
   Check out the guides to lookup, register and revoke attestations.
 </Card>
 
-<Card title="Protocol" href="protocol">
+<Card title="Protocol" icon={<GlobeAltIcon />} href="protocol">
   Check out how the SocialConnect protocol works
 </Card>
 
 <Card
   title="Next.js Example"
+  icon={<CodeBracketIcon />}
   href="https://github.com/celo-org/socialconnect-template"
 >
   Take a look at an Next.js example project with SocialConnect support
@@ -39,6 +41,7 @@ Here is a short demo of a payment from a Kaala wallet user to a Libera wallet us
 
 <Card
   title="Glossary"
+  icon={<BookmarkIcon />}
   href="https://github.com/celo-org/socialconnect-template"
 >
   Understand all the terms associated with SocialConnect protocol
