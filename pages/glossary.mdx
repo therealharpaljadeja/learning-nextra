@@ -1,0 +1,48 @@
+# Glossary
+
+### Issuer
+
+Issuer is an entity that is willing to take the overhead of verifying a user's ownership of an identifier.
+
+---
+
+### Plaintext Identifier
+
+`plainTextIdentifier` is any string of text that a user can use to identify other user.
+
+Phone number, Twitter handle, GitHub username anything that makes it easier to represent an evm based address.
+
+For example:- Alice's phone number: `+12345678901`
+
+---
+
+### Obfuscated Identifier
+
+Identifier that is used on-chain, to which the account address is mapped and used by dApps to lookup. It preserve the privacy of the user by not revealing the underlying plainTextIdentifier. Used for on-chain attestations, obtained by hashing the plaintext identifier, identifier prefix, and pepper using this schema: `sha3(sha3({prefix}://{plaintextIdentifier})__{pepper})`.
+
+---
+
+### IdentifierPrefix
+
+Identifier Prefix is used to differentiate users having same plainTextIdentifier for different purposes and composability.
+
+For example:- Consider Alice having same username on both Twitter and Github, `alicecodes`.
+
+How do we differentiate between Alice verified using Twitter and Github?
+This is where `prefix` comes into play, the plainTextIdentifier `alicecodes` can be represented as `twitter://alicecodes` and `github://alicecodes` this helps differentiate whether Alice was verified using Twitter or Github.
+
+Moreover, it also helps in composability if dApps follow a standard and use prefix then the corresponding `obsfuscatedIdentifier` will be the same thus making it easier for dApps to lookup identifier verified by other issuers.
+
+You can keep an eye on prefixes suggested by us [here](https://github.com/celo-org/social-connect/blob/main/packages/odis-identifiers/src/identifier.ts#L25).
+
+---
+
+### Pepper
+
+`pepper` is a unique secret, obtained by taking the first 13 characters of the `sha256` hash of the `unblinded signature`.
+
+---
+
+### Unblinded Signature
+
+Obtained by unblinding the signature returned by ODIS which is the combined output, comprised of signature by ODIS signers.
